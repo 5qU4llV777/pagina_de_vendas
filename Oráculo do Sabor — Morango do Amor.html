@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oráculo do Sabor — Morango do Amor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF6EC;
+    --panel:#FFFFFF;
+    --ink:#3A2318;
+    --ink-soft:#7A5C4D;
+    --red:#C8272B;
+    --red-dark:#9E1C20;
+    --pink:#FBD9CE;
+    --whats:#25D366;
+    --whats-dark:#1DA851;
+    --line: rgba(58,35,24,0.12);
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --cream:#241611;
+      --panel:#2F1D16;
+      --ink:#F6E9DF;
+      --ink-soft:#D8B9A8;
+      --line: rgba(246,233,223,0.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:#241611;
+    --panel:#2F1D16;
+    --ink:#F6E9DF;
+    --ink-soft:#D8B9A8;
+    --line: rgba(246,233,223,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  html,body{height:auto;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito Sans', system-ui, sans-serif;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:480px;margin:0 auto;padding:0 20px 48px;}
+
+  header.hero{
+    padding:36px 20px 28px;
+    text-align:center;
+    position:relative;
+  }
+  .brand-name{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    color:var(--red);
+    margin-bottom:4px;
+  }
+  .eyebrow-strand{
+    font-size:13px;
+    color:var(--ink-soft);
+    letter-spacing:.02em;
+    margin-bottom:6px;
+  }
+  .hero-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin:0 auto 8px;
+  }
+  .hero-image{
+    width:128px;
+    height:128px;
+    object-fit:cover;
+    border-radius:12px;
+  }
+  h1{
+    font-family:'Fredoka', system-ui, sans-serif;
+    font-weight:700;
+    font-size:clamp(34px, 9vw, 46px);
+    line-height:1.02;
+    margin:0 0 8px;
+    color:var(--red);
+    text-shadow: 1.5px 1.5px 0 var(--ink), -1.5px -1.5px 0 var(--ink), 1.5px -1.5px 0 var(--ink), -1.5px 1.5px 0 var(--ink);
+    -webkit-text-stroke: 0.6px var(--ink);
+  }
+  :root[data-theme="dark"] h1, :root:not([data-theme="light"]) h1{
+    @media (prefers-color-scheme: dark){ text-shadow:none; -webkit-text-stroke:0; }
+  }
+  .subtitle{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:34ch;
+    margin:0 auto;
+    line-height:1.45;
+  }
+  .subtitle strong{color:var(--ink);}
+
+  .price-banner{
+    margin:22px auto 0;
+    display:inline-block;
+    background:var(--red);
+    color:#fff;
+    padding:10px 26px;
+    border-radius:999px;
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    font-size:19px;
+  }
+  .price-banner span{font-size:26px;}
+
+  section{margin-top:34px;}
+  h2{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    font-size:21px;
+    margin:0 0 14px;
+    color:var(--ink);
+  }
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:18px 20px;
+    margin-bottom:14px;
+  }
+  .card.featured{
+    border-color:var(--red);
+    box-shadow:0 0 0 1px var(--red) inset;
+    position:relative;
+  }
+  .tag{
+    position:absolute;
+    top:-11px; right:16px;
+    background:var(--red);
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:999px;
+  }
+  .card-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .card-name{font-weight:800;font-size:17px;}
+  .card-price{font-family:'Fredoka',sans-serif;font-weight:600;font-size:22px;color:var(--red);white-space:nowrap;}
+  .card-note{color:var(--ink-soft);font-size:14px;margin-top:4px;line-height:1.4;}
+
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;
+    padding:13px 18px;
+    border-radius:12px;
+    font-weight:800;
+    font-size:15.5px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    margin-top:12px;
+  }
+  .btn-whats{background:var(--whats);color:#fff;}
+  .btn-whats:active{background:var(--whats-dark);}
+  .btn-mp{background:#009EE3;color:#fff;}
+  .btn-mp:active{background:#0085C7;}
+  .btn-outline{
+    background:transparent;
+    border:1.5px solid var(--red);
+    color:var(--red);
+  }
+
+  .info-list{list-style:none;padding:0;margin:0;}
+  .info-list li{
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;gap:10px;font-size:14.5px;color:var(--ink-soft);
+  }
+  .info-list li:last-child{border-bottom:none;}
+  .info-list b{color:var(--ink);}
+
+  .pay-box{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+  }
+  .pay-box p{color:var(--ink-soft);font-size:14.5px;line-height:1.5;margin:8px 0 0;}
+  .pix-key{
+    margin-top:14px;
+    background:var(--cream);
+    border:1px dashed var(--line);
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:14px;
+    font-weight:700;
+    word-break:break-all;
+  }
+
+  footer{
+    margin-top:38px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13px;
+  }
+  footer a{color:var(--red);font-weight:700;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="brand-name">Oráculo do Sabor</div>
+    <div class="eyebrow-strand">Campo Grande · MS</div>
+    <div class="hero-title">
+      <img src="oraculo.jpg" alt="Oráculo do Sabor" class="hero-image">
+    </div>
+    <p class="subtitle">Picolé artesanal tipo Magnum, com <strong>massa ninho</strong> e <strong>geleia de morangos frescos</strong>, coberto de chocolate branco nobre.</p>
+    <div class="price-banner">a partir de <span>R$ 17</span></div>
+    <div class="hero-images" style="display:flex; justify-content:center; gap:16px; margin-top:16px;">
+      <img src="morango.jpg" alt="Morango" class="hero-image">
+      <img src="chocolate.jpg" alt="Chocolate" class="hero-image">
+    </div>
+  </header>
+
+  <section id="pedir">
+    <h2>Escolha seu pedido</h2>
+
+    <div class="card">
+      <div class="card-top">
+        <div class="card-name">1 unidade</div>
+        <div class="card-price">R$ 17</div>
+      </div>
+      <div class="card-note">Retirada no local. Se quiser entrega, a taxa é calculada pela distância (R$ 12 a R$ 19).</div>
+      <a class="btn btn-mp" href="https://mpago.la/1Nq5Tfp" target="_blank">💳 Pagar R$ 17 (Mercado Pago)</a>
+      <a class="btn btn-whats" data-msg="Oi! Quero pedir 1 unidade do picolé Morango do Amor (R$ 17).">💬 Pedir via WhatsApp</a>
+    </div>
+
+    <div class="card featured">
+      <span class="tag">MAIS PEDIDO</span>
+      <div class="card-top">
+        <div class="card-name">Kit com 3</div>
+        <div class="card-price">R$ 51</div>
+      </div>
+      <div class="card-note">Entrega grátis em Campo Grande.</div>
+      <a class="btn btn-mp" href="https://mpago.la/2utPiNb" target="_blank">💳 Pagar R$ 51 (Mercado Pago)</a>
+      <a class="btn btn-whats" data-msg="Oi! Quero pedir o Kit com 3 picolés Morango do Amor (R$ 51, entrega grátis).">💬 Pedir via WhatsApp</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div class="card-name">Kit com 5</div>
+        <div class="card-price">R$ 85</div>
+      </div>
+      <div class="card-note">Entrega grátis em Campo Grande. Melhor custo por unidade.</div>
+      <a class="btn btn-mp" href="https://mpago.la/2SkvTrF" target="_blank">💳 Pagar R$ 85 (Mercado Pago)</a>
+      <a class="btn btn-whats" data-msg="Oi! Quero pedir o Kit com 5 picolés Morango do Amor (R$ 85, entrega grátis).">💬 Pedir via WhatsApp</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Como funciona</h2>
+    <ul class="info-list">
+      <li>📍 <span><b>Área de entrega:</b> Campo Grande, raio de 10 km do bairro Tijuca .</span></li>
+      <li>🛵 <span><b>Kit com 3 ou mais:</b> entrega grátis, combinada pelo WhatsApp.</span></li>
+      <li>🧊 <span><b>1 unidade avulsa:</b> retirada no local, ou entrega com taxa à parte.</span></li>
+      <li>❄️ <span><b>Validade:</b> 3 meses no freezer, sem perder o sabor.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Pagamento</h2>
+    <div class="pay-box">
+      <p>Aceitamos Pix e Mercado Pago. Use os botões acima em cada opção para pagar direto, ou combine pelo WhatsApp.</p>
+      <a class="btn btn-outline" href="#pedir">💬 Combinar pelo WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    Oráculo do Sabor · Picolés artesanais<br>
+    <a href="https://wa.me/5519988685511" id="whats-footer">(19) 98868-5511</a> · Campo Grande - MS<br>
+    Developer <a href="https://www.instagram.com/5qu411v777?stkn=b2R3MTdwM2tyMXJn" target="_blank" style="color:var(--red);font-weight:700;text-decoration:none;">5qu411v777</a>
+  </footer>
+
+</div>
+
+<script>
+  const phone = "5519988685511";
+  document.querySelectorAll('.btn-whats').forEach(btn => {
+    const msg = encodeURIComponent(btn.dataset.msg);
+    btn.href = `https://wa.me/${phone}?text=${msg}`;
+    btn.target = "_blank";
+  });
+</script>
+</body>
+</html>
